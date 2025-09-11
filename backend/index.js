@@ -29,6 +29,11 @@ app.get('/getClan', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => console.log(`Public IP: ${data.ip}`))
+    .catch(() => console.log('Could not fetch public IP'));
 });
 app.get('/', (req, res) => {
   res.send('Backend API funcionando. Usá /getClan para ver la info del clan.');
