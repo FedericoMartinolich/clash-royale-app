@@ -1,25 +1,74 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  "http://127.0.0.1:5500", // Live Server / abrir HTML en browser
+  "http://localhost:5173", // Vite
+  "https://clash-royale-app.onrender.com" // prod
+];
+
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log("Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
+}));
+
+
+// 🔹 Función auxiliar para hacer fetch a la API
+const fetchFromCR = async (endpoint) => {
+  const clanTag =process.env.CLAN_TAG; // convierte # en %23
+  const response = await fetch(`https://api.clashroyale.com/v1/clans/${clanTag}${endpoint}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.API_TOKEN}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`API request failed with status ${response.status}`);
+  }
+
+  return response.json();
+};
+
+// 🔹 Ruta para info general del clan
 app.get('/getClan', async (req, res) => {
   try {
-    const response = await fetch(`https://api.clashroyale.com/v1/clans/${process.env.CLAN_TAG}`, {
-      headers: {
-        Authorization: process.env.API_TOKEN
-      }
-    });
+    const data = await fetchFromCR('');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
-    if (!response.ok) {
-      return res.status(response.status).json({ error: 'API request failed' });
-    }
+// 🔹 Ruta para historial de River Races
+app.get('/getRiverRaceLog', async (req, res) => {
+  try {
+    const data = await fetchFromCR('/riverracelog');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
-    const data = await response.json();
+// 🔹 Ruta para River Race actual
+app.get('/getCurrentRiverRace', async (req, res) => {
+  try {
+    const data = await fetchFromCR('/currentriverrace');
     res.json(data);
   } catch (err) {
     console.error(err);
@@ -35,6 +84,12 @@ app.listen(PORT, () => {
     .then(data => console.log(`Public IP: ${data.ip}`))
     .catch(() => console.log('Could not fetch public IP'));
 });
+
 app.get('/', (req, res) => {
-  res.send('Backend API funcionando. Usá /getClan para ver la info del clan.');
+  res.send(`
+    Backend API funcionando 🚀<br>
+    - /getClan → Info del clan<br>
+    - /getRiverRaceLog → Historial de River Races<br>
+    - /getCurrentRiverRace → Carrera actual
+  `);
 });
