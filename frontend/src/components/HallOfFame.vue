@@ -15,7 +15,7 @@
                     <p><strong>Donations:</strong> {{ mostGivingPlayer?.donations }}</p>
                 </Card>
                 <Card :title="'Player of the Week'">
-                    <p><img src="../assets/imgs/emotes/57e26c2e-69e1-4d87-ab0d-17f6b4c91021.png" alt=""></p>
+                    <p><img src="../assets/imgs/items/clash-royale-clash-of-clans-brawl-stars-trophy-supercell-png-favpng-C5FSZ6Zb5Fq9f16Bu7UbCL2mp-removebg-preview.png" alt=""></p>
                     <button class="bg-white btn-supercell p-2 m-1">{{ POTW?.name }}</button>
                     <p><strong>Fame:</strong> {{ POTW?.fame }}</p>
                 </Card>
@@ -57,7 +57,7 @@ export default {
 
 <style>
 img {
-    width: 6rem;
+    width: auto;
     height: 6rem;
 }
 
