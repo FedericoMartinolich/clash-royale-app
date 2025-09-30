@@ -1,0 +1,227 @@
+@font-face {
+  font-family: "Supercell-Magic";
+  src: url("../fonts/Supercell-Magic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  text-shadow: 0 4px 0 #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+
+.text-supercell {
+  font-family: "Supercell-Magic";
+}
+
+/* Boton */
+
+.btn-supercell {
+  background: linear-gradient(to bottom, #45454529 50%, #00000042 50%);
+  border: 2px solid gray;
+  outline: 2px solid #000000;
+  border-radius: 10px;
+  color: #000000;
+  font-family: "Supercell-Magic", sans-serif;
+  text-decoration: none;
+}
+
+/* Emote */
+
+.emote-slot {
+  background: white;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: auto;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 1000px;
+}
+
+.emote-content {
+  font-size: 14px;
+}
+
+/* Legendary Emote */
+
+.emote-slot-legendary {
+  --s: 10px; /* spread-radius */
+  background: white;
+  border: 3px solid black;
+  position: relative;
+  transform: translate(0);
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  margin: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 1000px;
+}
+
+.emote-slot-legendary:before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--s));
+  transform: translate3d(0, 0, -1px);
+  background: conic-gradient(
+    from 90deg at 40% -25%,
+    #ff69b4,
+    /* rosa */ #ff1493,
+    /* rosa intenso */ #8a2be2,
+    /* morado */ #6a0dad,
+    /* morado oscuro */ #7b68ee,
+    /* celeste/lila claro */ #00bfff,
+    /* celeste */ #87cefa,
+    /* celeste claro */ #00ffff,
+    /* cian */ #87cefa,
+    /* celeste claro */ #00bfff,
+    /* celeste */ #7b68ee,
+    /* celeste/lila claro */ #8a2be2,
+    /* morado */ #6a0dad,
+    /* morado oscuro */ #ff1493,
+    /* rosa intenso */ #ff69b4,
+    /* rosa */ #ff69b4 /* rosa */
+  );
+
+  filter: blur(10px);
+}
+
+/* Fondo General */
+
+.background-blue {
+  /* imagen */
+  background-image: url("../imgs/backgrounds/blue-bg.png");
+  background-repeat: repeat;
+}
+
+.background-purple {
+  /* imagen */
+  background-image: url("../imgs/backgrounds/purple-bg.png");
+  background-repeat: repeat;
+}
+
+.background-green {
+  /* imagen */
+  background-image: url("../imgs/backgrounds/green-bg.png");
+  background-repeat: repeat;
+}
+
+.supercell-container {
+  font-family: "Supercell-Magic", sans-serif;
+  color: white;
+  text-align: center;
+  padding: 120px;
+}
+
+
+
+/* Banderin */
+
+.headerContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 24px;
+  scroll-margin-top: 80px;
+  max-width: min(100%, 1200px);
+  margin: auto;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1044 / 177;
+  width: 100%;
+  max-width: 800px;
+}
+
+.imageContainer img {
+  position:absolute;
+  height:100%;
+  width:100%;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  color:transparent
+}
+
+.headerText {
+  position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.banner {
+  --notch: 30px;
+  position: relative;
+  background: #8b1c1c;
+  color: white;
+  width: 400px;
+  padding: 2rem;
+  margin: 2rem auto;
+  text-align: center;
+  z-index: 1;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 1%,
+    calc(100% - var(--notch)) 50%,
+    100% 99%,
+    100% 100%,
+    0 100%,
+    0 99%,
+    var(--notch) 50%,
+    0 1%
+  );
+}
+
+/* Simulación del borde */
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(255, 255, 0); /* color del borde */
+  z-index: -1;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 1%,
+    calc(100% - var(--notch)) 50%,
+    100% 99%,
+    100% 100%,
+    0 100%,
+    0 99%,
+    var(--notch) 50%,
+    0 1%
+  );
+}
+
+/* Capa interior (relleno rojo) */
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 5px; /* grosor del borde */
+  background: #093484;
+  z-index: -1;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 1%,
+    calc(100% - var(--notch)) 50%,
+    100% 99%,
+    100% 100%,
+    0 100%,
+    0 99%,
+    var(--notch) 50%,
+    0 1%
+  );
+}

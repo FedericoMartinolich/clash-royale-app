@@ -29,27 +29,38 @@ app.use(cors({
 
 // 🔹 Función auxiliar para hacer fetch a la API
 const fetchFromCR = async (endpoint) => {
-  const clanTag =process.env.CLAN_TAG; // convierte # en %23
-  const response = await fetch(`https://api.clashroyale.com/v1/clans/${clanTag}${endpoint}`, {
+  const clanTag = process.env.CLAN_TAG; // ya con %23
+  const url = `https://api.clashroyale.com/v1/clans/${clanTag}${endpoint}`;
+
+  console.log("👉 Fetching:", url); // debug
+
+  const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_TOKEN}`
     }
   });
 
+  const text = await response.text();
+
   if (!response.ok) {
-    throw new Error(`API request failed with status ${response.status}`);
+    console.error("❌ API error:", response.status, text);
+    throw new Error(`API request failed: ${response.status}`);
   }
 
-  return response.json();
+  return JSON.parse(text);
 };
+
 
 // 🔹 Ruta para info general del clan
 app.get('/getClan', async (req, res) => {
   try {
+    console.log("CLAN_TAG:", process.env.CLAN_TAG);
+    console.log("API_TOKEN:", process.env.API_TOKEN ? "OK" : "MISSING");
+
     const data = await fetchFromCR('');
     res.json(data);
   } catch (err) {
-    console.error(err);
+    console.error("❌ Error en /getClan:", err.message);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -76,6 +87,28 @@ app.get('/getCurrentRiverRace', async (req, res) => {
   }
 });
 
+// 🔹 Ruta para historial de War
+app.get('/getWarLog', async (req, res) => {
+  try {
+    const data = await fetchFromCR('/warlog');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// 🔹 Ruta para War actual
+app.get('/getCurrentWar', async (req, res) => {
+  try {
+    const data = await fetchFromCR('/currentwar');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 
@@ -90,6 +123,10 @@ app.get('/', (req, res) => {
     Backend API funcionando 🚀<br>
     - /getClan → Info del clan<br>
     - /getRiverRaceLog → Historial de River Races<br>
-    - /getCurrentRiverRace → Carrera actual
+    - /getCurrentRiverRace → Carrera actual<br>
+    - /getWarLog → Historial de guerras<br>
+    - /getCurrentWar → Guerra actual<br>
+    <br>
+    Nota: Esta API es para uso exclusivo de mi proyecto Clash Royale App.<br>
   `);
 });
