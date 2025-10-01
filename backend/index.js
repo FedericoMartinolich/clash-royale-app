@@ -19,12 +19,15 @@ app.use(cors({
   origin: function (origin, callback) {
     console.log("CORS check for:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
+      // 🔹 aceptar si es undefined o está en la lista
       callback(null, true);
     } else {
+      console.log("❌ Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   }
 }));
+
 
 
 
