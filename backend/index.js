@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   "http://127.0.0.1:5500", // Live Server / abrir HTML en browser
   "http://localhost:5173", // Vite
-  "https://clash-royale-app.onrender.com" // prod
+  "https://clash-royale-app.onrender.com", // prod back
+  "https://twincrowns.onrender.com" // prod front
 ];
 
 
