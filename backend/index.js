@@ -17,14 +17,15 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
+    console.log("CORS check for:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log("Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   }
 }));
+
 
 
 // 🔹 Función auxiliar para hacer fetch a la API
