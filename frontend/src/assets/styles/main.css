@@ -9,6 +9,20 @@
   font-display: swap;
 }
 
+.text-outline {
+  font-family: "Supercell-Magic";
+  color: white;
+   text-shadow:
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black,
+     0px  2px 0 black,
+     2px  0px 0 black,
+    -2px  0px 0 black,
+     0px -2px 0 black;
+}
+
 .text-supercell {
   font-family: "Supercell-Magic";
 }
@@ -155,73 +169,4 @@
     justify-content: center;
     align-items: center;
     padding-top: 3px;
-}
-
-.banner {
-  --notch: 30px;
-  position: relative;
-  background: #8b1c1c;
-  color: white;
-  width: 400px;
-  padding: 2rem;
-  margin: 2rem auto;
-  text-align: center;
-  z-index: 1;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 1%,
-    calc(100% - var(--notch)) 50%,
-    100% 99%,
-    100% 100%,
-    0 100%,
-    0 99%,
-    var(--notch) 50%,
-    0 1%
-  );
-}
-
-/* Simulación del borde */
-.banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgb(255, 255, 0); /* color del borde */
-  z-index: -1;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 1%,
-    calc(100% - var(--notch)) 50%,
-    100% 99%,
-    100% 100%,
-    0 100%,
-    0 99%,
-    var(--notch) 50%,
-    0 1%
-  );
-}
-
-/* Capa interior (relleno rojo) */
-.banner::after {
-  content: "";
-  position: absolute;
-  inset: 5px; /* grosor del borde */
-  background: #093484;
-  z-index: -1;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 1%,
-    calc(100% - var(--notch)) 50%,
-    100% 99%,
-    100% 100%,
-    0 100%,
-    0 99%,
-    var(--notch) 50%,
-    0 1%
-  );
 }

@@ -1,12 +1,19 @@
 <template>
+  <Navbar />
+
+  <Header v-if="clan">
+    <ClanBanner :clan="clan"/>
+    <ClanInfo :clan="clan"/>
+  </Header>
+  
+  <WoodDiv />
+
   <div class="background-blue">
     <div class="supercell-container text-black" v-if="clan">
-      <ClanBanner :clan="clan"/>
-      <ClanInfo :clan="clan"/>
       <Members :clan="clan"/>
     </div>
   </div>
-  <WoodDiv />
+  <WoodDiv v-if="clan"/>
 
   <HallOfFame :mostGivingPlayer="mostGivingPlayer" :POTS="POTS" :POTW="POTW"/>
   <WoodDiv />
@@ -15,6 +22,9 @@
   <WoodDiv />
 
   <Contact />
+  <WoodDiv />
+  
+  <Footer />
 </template>
 
 <script>
@@ -23,6 +33,9 @@ import ClanBanner from "./components/ClanBanner.vue";
 import ClanInfo from "./components/ClanInfo.vue";
 import HallOfFame from "./components/HallOfFame.vue";
 import Contact from "./components/Contact.vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import Navbar from "./components/Navbar.vue";
 
 /* common */
 import WoodDiv from "./components/WoodDiv.vue";
@@ -38,6 +51,9 @@ export default {
     HallOfFame,
     CurrentRanking,
     Contact,
+    Header,
+    Footer,
+    Navbar,
   },
   data() {
     return {

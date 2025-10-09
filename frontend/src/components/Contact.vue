@@ -36,10 +36,7 @@ export default {
 </script>
 <style>
 .background-simple {
-    background: #dfecff;
-    background: radial-gradient(circle, rgb(223, 236, 255) 0, rgb(197, 217, 249) 78%, rgb(171, 199, 244) 100%);
-    background-size: cover;
-    min-height: 100vh;
+    background-image: url(../assets/imgs/wallpapers/wallpaperRey.jpg);
     padding: 2rem 0;
 }
 .icon-whatsapp {

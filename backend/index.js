@@ -7,6 +7,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.NODE_ENV === "development" ? "localhost" : "0.0.0.0"; // render necesita 0.0.0.0
 
 const allowedOrigins = [
   "http://127.0.0.1:5500", // Live Server / abrir HTML en browser
@@ -28,8 +29,6 @@ app.use(cors({
     }
   }
 }));
-
-
 
 
 // 🔹 Función auxiliar para hacer fetch a la API
@@ -114,8 +113,8 @@ app.get('/getCurrentWar', async (req, res) => {
   }
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Server running on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`✅ Server running on http://${HOST}:${PORT}`);
 
   fetch('https://api.ipify.org?format=json')
     .then(res => res.json())

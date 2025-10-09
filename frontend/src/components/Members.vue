@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row gap-4">
           <div class="emote-slot-legendary align-items-center justify-content mt-4 p-3 col">
-            <h5>Lideres</h5>
+            <h5>Leaders</h5>
             <ul class="list-unstyled">
               <li v-for="miembros in clan.memberList" class="d-inline-block">
                 <button
@@ -17,7 +17,7 @@
           </div>
 
           <div class="emote-slot-legendary  align-items-center justify-content mt-4 p-3 col">
-            <h5>Veteranos</h5>
+            <h5>Elders</h5>
             <ul class="list-unstyled">
               <li v-for="miembros in clan.memberList" class="d-inline-block">
                 <button
@@ -34,7 +34,7 @@
           </div>
 
           <div class="emote-slot align-items-center justify-content p-3">
-            <h5>Miembros</h5>
+            <h5>Members</h5>
             <ul class="list-unstyled">
               <li v-for="miembros in clan.memberList" class="d-inline-block">
                 <button
