@@ -1,6 +1,6 @@
 <template>
-    <div class="background-simple">
-        <div class="supercell-container">
+    <div class="background-simple minim-height">
+        <div class="supercell-container minim-height">
             <WoodBanner :texto="'Contacto'" />
 
             <div class="emote-slot align-items-center justify-content mt-4 p-3">
@@ -37,6 +37,9 @@ export default {
 <style>
 .background-simple {
     background-image: url(../assets/imgs/wallpapers/wallpaperRey.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 2rem 0;
 }
 .icon-whatsapp {

@@ -1,14 +1,14 @@
 <template>
 <nav>
   <div class="wrapper">
-    <div class="logo"><a href="#">Logo</a></div>
+    <div class="logo"><a href="#1">Twin Crowns</a></div>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li>
+      <li><a href="#1">Home</a></li>
+      <li><a href="#2">Integrants</a></li>
+      <!-- <li>
         <a href="#" class="desktop-item">Dropdown Menu</a>
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
@@ -18,8 +18,8 @@
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
         </ul>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a href="#" class="desktop-item">Mega Menu</a>
         <input type="checkbox" id="showMega">
         <label for="showMega" class="mobile-item">Mega Menu</label>
@@ -57,8 +57,10 @@
             </div>
           </div>
         </div>
-      </li>
-      <li><a href="#">Feedback</a></li>
+      </li> -->
+      <li><a href="#3">Hall of Fame</a></li>
+      <li><a href="#4">Current Ranking</a></li>
+      <li><a href="#5">Contact</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>

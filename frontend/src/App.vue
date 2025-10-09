@@ -1,27 +1,27 @@
 <template>
   <Navbar />
 
-  <Header v-if="clan">
+  <Header v-if="clan" id="1">
     <ClanBanner :clan="clan"/>
     <ClanInfo :clan="clan"/>
   </Header>
   
   <WoodDiv />
 
-  <div class="background-blue">
+  <div class="background-blue" id="2">
     <div class="supercell-container text-black" v-if="clan">
       <Members :clan="clan"/>
     </div>
   </div>
   <WoodDiv v-if="clan"/>
 
-  <HallOfFame :mostGivingPlayer="mostGivingPlayer" :POTS="POTS" :POTW="POTW"/>
+  <HallOfFame :mostGivingPlayer="mostGivingPlayer" :POTS="POTS" :POTW="POTW" id="3"/>
   <WoodDiv />
 
-  <CurrentRanking :currentRiverRaceTop5="currentRiverRaceTop5"/>
+  <CurrentRanking :currentRiverRaceTop5="currentRiverRaceTop5" id="4"/>
   <WoodDiv />
 
-  <Contact />
+  <Contact id="5"/>
   <WoodDiv />
   
   <Footer />

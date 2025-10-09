@@ -9,6 +9,10 @@
   font-display: swap;
 }
 
+.minim-height{
+  min-height: 900px;
+}
+
 .text-outline {
   font-family: "Supercell-Magic";
   color: white;
